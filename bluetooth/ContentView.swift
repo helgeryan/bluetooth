@@ -88,8 +88,8 @@ struct ContentView: View {
                         .padding()
                     }
                 }
-                
-            }.onChange(of: bluetoothManager.bluetoothError) { (error) in
+            }
+            .onChange(of: bluetoothManager.bluetoothError) { (error) in
                 withAnimation {
                     self.isError = error != nil
                 }
