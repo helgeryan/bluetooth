@@ -29,6 +29,7 @@ class BluetoothManager: ObservableObject {
     @Published var discoveredPeripherals: [BluetoothDevice] = []
     @Published var connectedPeripherals: [BluetoothDevice] = []
     @Published var isScanning: Bool = false
+    @Published var bluetoothError: BluetoothError? = .failedToConnect
 
     func startScanning() {
         isScanning = true
@@ -47,9 +48,20 @@ class BluetoothManager: ObservableObject {
     func connect(device: BluetoothDevice) {
         service.connect(device: device)
     }
+    
+    func clearError() {
+        bluetoothError = nil
+    }
 }
 
 extension BluetoothManager: BluetoothServiceDelegate {
+    func didReceiveError(error: BluetoothError) {
+        self.bluetoothError = error
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.bluetoothError = nil
+        }
+    }
+    
     func didConnectPeripheral(periph: CBPeripheral) {
         if let device = discoveredPeripherals.first(where: { return $0.id == periph.identifier.uuidString }) {
             connectedPeripherals.append(device)

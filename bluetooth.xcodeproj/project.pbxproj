@@ -15,6 +15,7 @@
 		E67FA2F02B570D5200496329 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67FA2EF2B570D5200496329 /* BluetoothManager.swift */; };
 		E67FA2F32B583BD900496329 /* DeviceRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67FA2F22B583BD900496329 /* DeviceRowView.swift */; };
 		E67FA2F52B583BE100496329 /* DeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67FA2F42B583BE100496329 /* DeviceView.swift */; };
+		E67FA2F72B58574A00496329 /* BluetoothError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67FA2F62B58574A00496329 /* BluetoothError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		E67FA2EF2B570D5200496329 /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		E67FA2F22B583BD900496329 /* DeviceRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRowView.swift; sourceTree = "<group>"; };
 		E67FA2F42B583BE100496329 /* DeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
+		E67FA2F62B58574A00496329 /* BluetoothError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			children = (
 				E67FA2ED2B570D2F00496329 /* BluetoothService.swift */,
 				E67FA2EF2B570D5200496329 /* BluetoothManager.swift */,
+				E67FA2F62B58574A00496329 /* BluetoothError.swift */,
 			);
 			path = Bluetooth;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E67FA2E12B570C3400496329 /* ContentView.swift in Sources */,
+				E67FA2F72B58574A00496329 /* BluetoothError.swift in Sources */,
 				E67FA2EE2B570D2F00496329 /* BluetoothService.swift in Sources */,
 				E67FA2F52B583BE100496329 /* DeviceView.swift in Sources */,
 				E67FA2F32B583BD900496329 /* DeviceRowView.swift in Sources */,
