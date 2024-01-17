@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct bluetoothApp: App {
+    @StateObject var bluetoothManager: BluetoothManager = BluetoothManager()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(bluetoothManager)
         }
     }
 }
