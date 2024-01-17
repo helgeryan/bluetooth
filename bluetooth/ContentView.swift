@@ -16,7 +16,9 @@ struct ContentView: View {
                 VStack(spacing: 0) {
                     if !bluetoothManager.isScanning {
                         Button {
-                            bluetoothManager.startScanning()
+                            withAnimation {
+                                bluetoothManager.startScanning()
+                            }
                         } label: {
                             Text("Scan for devices")
                                 .foregroundStyle(.blue)
@@ -25,7 +27,9 @@ struct ContentView: View {
                         .padding()
                     } else {
                         Button {
-                            bluetoothManager.stopScanning()
+                            withAnimation {
+                                bluetoothManager.stopScanning()
+                            }
                         } label: {
                             Text("Stop scanning")
                                 .foregroundStyle(.blue)
