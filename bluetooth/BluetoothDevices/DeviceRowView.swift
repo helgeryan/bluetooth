@@ -40,9 +40,18 @@ struct BLEDeviceRow: View {
                             .foregroundStyle(.white)
                         ForEach(Array(device.advertisementData.keys), id: \.self) { key in
                             if let adData = device.advertisementData[key] as? String {
-                                Text(adData)
-                                    .font(.system(size: 10, weight: .regular))
+                                Text("\(key) \(adData)")
+                                    .font(.system(size: 9, weight: .regular))
                                     .foregroundStyle(.white)
+                            } else if let adData = device.advertisementData[key] as? Int {
+                                Text("\(key) \(adData)")
+                                    .font(.system(size: 9, weight: .regular))
+                                    .foregroundStyle(.white)
+                            } else if let adData = device.advertisementData[key] as? Data {
+                                Text("\(key) \(adData.base64EncodedString())")
+                                    .multilineTextAlignment(.leading)
+                                        .font(.system(size: 9, weight: .regular))
+                                        .foregroundStyle(.white)
                             }
                         }
                     }

@@ -23,20 +23,21 @@ struct DeviceView: View {
                         .foregroundStyle(.white)
                         .padding(.horizontal)
                 }
-                Text("Identifier")
-                    .font(.system(size: 18, weight: .semibold))
-                    .foregroundStyle(.white)
-                    .padding(.horizontal)
-                    .padding(.top, 4)
-                
-                Text(device.periph.identifier.uuidString)
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundStyle(.white)
-                    .padding(.horizontal)
-                    .padding(.top, 2)
                 
                 HStack(spacing: 0) {
                     VStack(alignment: .leading, spacing: 0) {
+                        Text("Identifier")
+                            .font(.system(size: 18, weight: .semibold))
+                            .foregroundStyle(.white)
+                            .padding(.horizontal)
+                            .padding(.top, 4)
+                        
+                        Text(device.periph.identifier.uuidString)
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundStyle(.white)
+                            .padding(.horizontal)
+                            .padding(.top, 2)
+                        
                         if device.advertisementData.keys.count > 0 {
                             Text("Advertisement Data")
                                 .font(.system(size: 20, weight: .bold))
@@ -45,10 +46,20 @@ struct DeviceView: View {
                                 .foregroundStyle(.white)
                             ForEach(Array(device.advertisementData.keys), id: \.self) { key in
                                 if let adData = device.advertisementData[key] as? String {
-                                    Text(adData)
+                                    Text("\(key) \(adData)")
                                         .font(.system(size: 12, weight: .regular))
                                         .foregroundStyle(.white)
                                         .padding(.horizontal)
+                                } else if let adData = device.advertisementData[key] as? Int {
+                                    Text("\(key) \(adData)")
+                                        .font(.system(size: 12, weight: .regular))
+                                        .foregroundStyle(.white)
+                                        .padding(.horizontal)
+                                } else if let adData = device.advertisementData[key] as? Data {
+                                    Text("\(key) \(adData.base64EncodedString())")
+                                            .font(.system(size: 12, weight: .regular))
+                                            .foregroundStyle(.white)
+                                            .padding(.horizontal)
                                 }
                             }
                         }
