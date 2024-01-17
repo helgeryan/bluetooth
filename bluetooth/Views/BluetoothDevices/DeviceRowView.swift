@@ -11,9 +11,8 @@ import SwiftUI
 struct BLEDeviceRow: View {
     let device: BluetoothDevice
     var body: some View {
-        NavigationLink(destination: {
-            DeviceView(device: device)
-        }, label: {
+        
+        NavigationLink(value: device, label: {
             HStack {
                 VStack(alignment: .leading) {
                     if let name = device.periph.name {

@@ -8,21 +8,6 @@
 import Foundation
 import CoreBluetooth
 
-typealias AdvertisementData = [String: Any]
-
-struct BluetoothDevice: Identifiable {
-    
-    let periph: CBPeripheral
-    let id: String
-    let advertisementData: [String: Any]
-    
-    init(periph: CBPeripheral, id: String, advertisementData: [String: Any]) {
-        self.periph = periph
-        self.id = id
-        self.advertisementData = advertisementData
-    }
-}
-
 class BluetoothManager: ObservableObject {
     
     var service: BluetoothService = BluetoothService()

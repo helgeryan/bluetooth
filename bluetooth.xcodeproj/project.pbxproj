@@ -18,6 +18,7 @@
 		E67FA2F72B58574A00496329 /* BluetoothError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67FA2F62B58574A00496329 /* BluetoothError.swift */; };
 		E67FA2FB2B5877AF00496329 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67FA2FA2B5877AF00496329 /* ErrorView.swift */; };
 		E67FA2FD2B5878C300496329 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67FA2FC2B5878C300496329 /* HomeView.swift */; };
+		E67FA3002B5879EC00496329 /* BluetoothDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67FA2FF2B5879EC00496329 /* BluetoothDevice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		E67FA2F62B58574A00496329 /* BluetoothError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothError.swift; sourceTree = "<group>"; };
 		E67FA2FA2B5877AF00496329 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		E67FA2FC2B5878C300496329 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E67FA2FF2B5879EC00496329 /* BluetoothDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothDevice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				E67FA2ED2B570D2F00496329 /* BluetoothService.swift */,
 				E67FA2EF2B570D5200496329 /* BluetoothManager.swift */,
 				E67FA2F62B58574A00496329 /* BluetoothError.swift */,
+				E67FA2FF2B5879EC00496329 /* BluetoothDevice.swift */,
 			);
 			path = Bluetooth;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				E67FA2EE2B570D2F00496329 /* BluetoothService.swift in Sources */,
 				E67FA2F52B583BE100496329 /* DeviceView.swift in Sources */,
 				E67FA2F32B583BD900496329 /* DeviceRowView.swift in Sources */,
+				E67FA3002B5879EC00496329 /* BluetoothDevice.swift in Sources */,
 				E67FA2F02B570D5200496329 /* BluetoothManager.swift in Sources */,
 				E67FA2DF2B570C3400496329 /* bluetoothApp.swift in Sources */,
 				E67FA2FB2B5877AF00496329 /* ErrorView.swift in Sources */,
