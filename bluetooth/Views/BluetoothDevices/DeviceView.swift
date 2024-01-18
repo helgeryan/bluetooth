@@ -10,6 +10,7 @@ import SwiftUI
 
 struct DeviceView: View {
     @EnvironmentObject var bluetoothManager: BluetoothManager
+    @State var isConnected: Bool = false
     let device: BluetoothDevice
     var body: some View {
         ZStack {
@@ -67,42 +68,52 @@ struct DeviceView: View {
                     Spacer()
                 }
                 
-                if !bluetoothManager.connectedPeripherals.contains(where: { return $0.id == device.id }) {
-                    Button {
-                        withAnimation {
-                            bluetoothManager.connect(device: device)
-                        }
-                    } label: {
-                        ZStack {
-                            Text("Connect")
-                                .padding(.vertical, 8)
-                                .padding(.horizontal, 8)
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundStyle(.blue)
-                        }
-                        .background(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                        .clipped()
-                    }
-                    .padding(.top, 3)
-                } else {
-                    Button {
+                let connectedButtonText = !isConnected ? "Connect" : "Disconnect"
+                let buttonTextColor = !isConnected ? Color.blue : Color.white
+                let buttonColor = !isConnected ? Color.white : Color.red
+                
+                Button {
+                    if isConnected {
                         bluetoothManager.disconnect(device: device)
-                    } label: {
-                        ZStack {
-                            Text("Disconnect")
-                                .padding(.vertical, 8)
-                                .padding(.horizontal, 8)
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundStyle(.white)
-                        }
-                        .background(.red)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                        .clipped()
+                    } else {
+                        bluetoothManager.connect(device: device)
                     }
-                    .padding(.top, 3)
+                } label: {
+                    ZStack {
+                        Text(connectedButtonText)
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 8)
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundStyle(buttonTextColor)
+                    }
+                    .background(buttonColor)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .clipped()
                 }
+                .padding(.top, 3)
+//                else {
+//                    Button {
+//                        bluetoothManager.disconnect(device: device)
+//                    } label: {
+//                        ZStack {
+//                            Text("Disconnect")
+//                                .padding(.vertical, 8)
+//                                .padding(.horizontal, 8)
+//                                .font(.system(size: 14, weight: .semibold))
+//                                .foregroundStyle(.white)
+//                        }
+//                        .background(.red)
+//                        .clipShape(RoundedRectangle(cornerRadius: 8))
+//                        .clipped()
+//                    }
+//                    .padding(.top, 3)
+//                }
                 Spacer()
+            }
+        }
+        .onChange(of: bluetoothManager.connectedPeripherals) { connectedPeripherals in
+            withAnimation {
+                isConnected = bluetoothManager.connectedPeripherals.contains(where: { return $0.id == device.id })
             }
         }
     }

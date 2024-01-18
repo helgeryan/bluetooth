@@ -9,9 +9,11 @@ import Foundation
 import SwiftUI
 
 struct BLEDeviceRow: View {
+    @EnvironmentObject var bluetoothManager: BluetoothManager
+    @State var isConnected: Bool = false
     let device: BluetoothDevice
     var body: some View {
-        
+        let buttonTextColor = isConnected ? Color.green : Color.blue
         NavigationLink(value: device, label: {
             HStack {
                 VStack(alignment: .leading) {
@@ -58,22 +60,14 @@ struct BLEDeviceRow: View {
                 Spacer()
             }
             .padding()
-            .modifier(BLEConnectedBackground(device: device))
+            .background(buttonTextColor)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .clipped()
+            .onChange(of: bluetoothManager.connectedPeripherals) { connectedPeripherals in
+                withAnimation {
+                    isConnected = bluetoothManager.connectedPeripherals.contains(where: { return $0.id == device.id })
+                }
+            }
         })
-    }
-}
-
-struct BLEConnectedBackground: ViewModifier {
-    @EnvironmentObject var bluetoothManager: BluetoothManager
-    var device: BluetoothDevice
-
-    func body(content: Content) -> some View {
-        if !bluetoothManager.connectedPeripherals.contains(where: { return $0.id == device.id }) {
-            content.background(.blue)
-        } else {
-            content.background(.green)
-        }
     }
 }
